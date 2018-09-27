@@ -1,0 +1,1 @@
+exports.DARK_CLOUD_API_KEY = process.env.DARK_CLOUD_API_KEY;
