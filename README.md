@@ -1,2 +1,1 @@
-# chaddit-server
-- testing
+# chaddit server test
