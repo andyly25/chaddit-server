@@ -42,7 +42,11 @@ app.use(cors({
 }));
 
 // allowing preflight across the board
-app.options('*', cors())
+app.options('*', cors({
+  origin: 'https://chaddit-server.herokuapp.com/api',
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
