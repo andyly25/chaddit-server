@@ -37,8 +37,12 @@ app.use(morgan('common'));
 // });
 app.use(cors({
   origin: 'https://chaddit-server.herokuapp.com/api',
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
+
+// allowing preflight across the board
+app.options('*', cors());
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
