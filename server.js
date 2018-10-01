@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const cors = require('cors');
 
 // Here we use destructuring assignment with renaming so the two variables
 // called router (from ./users and ./auth) have different names
@@ -25,15 +26,16 @@ const app = express();
 app.use(morgan('common'));
 
 // CORS
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  if (req.method === 'OPTIONS') {
-    return res.send(204);
-  }
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   if (req.method === 'OPTIONS') {
+//     return res.send(204);
+//   }
+//   next();
+// });
+app.use(cors());
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
