@@ -35,7 +35,10 @@ app.use(morgan('common'));
 //   }
 //   next();
 // });
-app.use(cors());
+app.use(cors({
+  origin: 'https://chaddit-server.herokuapp.com',
+  credentials: true
+}));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
