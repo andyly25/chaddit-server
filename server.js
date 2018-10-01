@@ -36,7 +36,7 @@ app.use(morgan('common'));
 //   next();
 // });
 app.use(cors({
-  origin: 'https://chaddit-server.herokuapp.com',
+  origin: 'https://chaddit-server.herokuapp.com/api',
   credentials: true
 }));
 
