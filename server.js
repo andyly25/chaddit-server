@@ -52,6 +52,9 @@ app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
+// annoying favicon error
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
   return res.json({
