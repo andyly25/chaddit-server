@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const cors = require('cors');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 // Here we use destructuring assignment with renaming so the two variables
 // called router (from ./users and ./auth) have different names
@@ -21,6 +23,8 @@ mongoose.Promise = global.Promise;
 const { PORT, DATABASE_URL } = require('./config');
 
 const app = express();
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // Logging
 app.use(morgan('common'));
@@ -51,9 +55,6 @@ app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
-
-// annoying favicon error
-app.get('/favicon.ico', (req, res) => res.status(204));
 
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
