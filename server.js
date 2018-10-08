@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const favicon = require('serve-favicon');
+const path = require('path')
 
 // Here we use destructuring assignment with renaming so the two variables
 // called router (from ./users and ./auth) have different names
@@ -23,6 +25,9 @@ const app = express();
 
 // Logging
 app.use(morgan('common'));
+
+// favicon control
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // CORS
 app.use(function (req, res, next) {
