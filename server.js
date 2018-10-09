@@ -27,7 +27,7 @@ const app = express();
 app.use(morgan('common'));
 
 // favicon control
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', '/favicon.ico')));
 
 // CORS not wokring?
 app.use(function (req, res, next) {
