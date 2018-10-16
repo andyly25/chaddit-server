@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
+const morgan = require('morgan');
 // import chatkit
 const ChatKit = require('@pusher/chatkit-server');
 
 const app = express();
+
+// // Logging
+app.use(morgan('common'));
 
 // initiate our own chatkit
 const chatkit = new ChatKit.default({
@@ -14,7 +18,16 @@ const chatkit = new ChatKit.default({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  if (req.method === 'OPTIONS') {
+    return res.send(204);
+  }
+  next();
+});
 
 // we then take a user and create a chatkit user through chatkit instance
 app.post('/users', (req, res) => {
