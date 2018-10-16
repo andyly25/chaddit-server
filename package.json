@@ -1,16 +1,26 @@
 {
-  "name": "node-jwt-auth",
+  "name": "chaddit-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "chaddit server",
   "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "mocha --exit"
+  "directories": {
+    "test": "test"
   },
-  "keywords": [],
+  "scripts": {
+    "test": "mocha --exit",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birisora/chaddit-server.git"
+  },
+  "keywords": [
+    "node"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@pusher/chatkit-server": "^0.12.2",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.4",
@@ -30,5 +40,9 @@
     "chai-http": "^4.2.0",
     "faker": "^3.1.0",
     "mocha": "^4.0.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/birisora/chaddit-server/issues"
+  },
+  "homepage": "https://github.com/birisora/chaddit-server#readme"
 }
